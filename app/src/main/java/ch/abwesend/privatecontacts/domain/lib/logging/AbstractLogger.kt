@@ -9,7 +9,7 @@ package ch.abwesend.privatecontacts.domain.lib.logging
 import android.util.Log
 import ch.abwesend.privatecontacts.BuildConfig
 import ch.abwesend.privatecontacts.domain.util.Constants
-import com.google.firebase.crashlytics.FirebaseCrashlytics
+//import com.google.firebase.crashlytics.//FirebaseCrashlytics
 
 abstract class AbstractLogger : ILogger {
     // ======== abstract methods ========
@@ -65,7 +65,7 @@ abstract class AbstractLogger : ILogger {
             warningImpl(messages)
             if (logToCrashlytics()) {
                 val message = messages.joinToString(separator = Constants.linebreak)
-                FirebaseCrashlytics.getInstance().log(message)
+                //FirebaseCrashlytics.getInstance().log(message)
             }
         }
     }
@@ -91,7 +91,7 @@ abstract class AbstractLogger : ILogger {
         if (checkLogLevel(Log.WARN)) {
             warningImpl(listOf(warningMessage))
             if (logToCrashlytics()) {
-                FirebaseCrashlytics.getInstance().recordException(t)
+                ////FirebaseCrashlytics.getInstance().recordException(t)
             }
         }
     }
@@ -101,7 +101,7 @@ abstract class AbstractLogger : ILogger {
         if (checkLogLevel(Log.ERROR)) {
             errorImpl(listOf(logMessage))
             if (logToCrashlytics()) {
-                FirebaseCrashlytics.getInstance().recordException(t)
+                //FirebaseCrashlytics.getInstance().recordException(t)
             }
         }
     }
@@ -111,14 +111,14 @@ abstract class AbstractLogger : ILogger {
         if (checkLogLevel(Log.ERROR)) {
             errorImpl(listOf(logMessage))
             if (logToCrashlytics()) {
-                FirebaseCrashlytics.getInstance().recordException(t)
+                //FirebaseCrashlytics.getInstance().recordException(t)
             }
         }
     }
 
     /** always logs to crashlytics, independent of the settings */
     override fun logToCrashlytics(t: Throwable) {
-        FirebaseCrashlytics.getInstance().recordException(t)
+        //FirebaseCrashlytics.getInstance().recordException(t)
     }
 
     private fun createThrowableLogMessage(t: Throwable, message: String? = null): String {
